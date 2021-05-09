@@ -1,8 +1,8 @@
 ### PHP training 🎯
 
-🧠 CodingGame: [@Tchoow](https://cssbattle.dev/player/tchoow)
+🧠 CodingGame: [@Tchoow](https://www.codingame.com/profile/e1b7cf093b3c8649780dc1862a1243729489804)
 
-🖌️ CSSbattle: [@Tchoow](https://www.codingame.com/profile/e1b7cf093b3c8649780dc1862a1243729489804)
+🖌️ CSSbattle: [@Tchoow](https://cssbattle.dev/player/tchoow)
 
 
 <!--
