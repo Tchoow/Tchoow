@@ -5,6 +5,8 @@
 🖌️ CSSbattle: [@Tchoow](https://cssbattle.dev/player/tchoow)
 
 
+![github stats](https://github-readme-stats.vercel.app/api?username=Tchoow&show_icons=true&theme=tokyonight&count_private=true)
+
 <!--
 **Tchoow/Tchoow** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
