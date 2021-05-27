@@ -6,7 +6,11 @@
 
 
 ![github stats](https://github-readme-stats.vercel.app/api/top-langs/?username=Tchoow&theme=tokyonigh)
+
+
 <!--
+<img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Tchoow&theme=dark&layout=compact&exclude_lang=java+r&hide_border=true&count_private=true"/>
+
 
 **Tchoow/Tchoow** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
