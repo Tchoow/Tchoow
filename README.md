@@ -1,4 +1,4 @@
-## 🤙 Bienvenue sur mon GitHub ! &nbsp;&nbsp;/&nbsp; [FR] 🔵⚪️🔴
+## 🤙 Bienvenue sur mon GitHub !
 
 ### ❓ &nbsp;À propos de moi
 - 🏳️ &nbsp; Français 🔵⚪️🔴 
