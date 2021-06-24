@@ -1,7 +1,7 @@
-## 🤙 Bienvenue sur mon GitHub !
+## 🤙 Bienvenue sur mon GitHub ! &nbsp;&nbsp;/&nbsp; [FR] 🔵⚪️🔴
 
 ### ❓ &nbsp;À propos de moi
-
+- 🏳️ &nbsp; Français 🔵⚪️🔴 
 - 🎓 &nbsp; Étudiant en informatique à l'IUT du Havre.
 - ❤️ &nbsp; Passioné par le monde des drones et plus particulièrement le [FPV](https://fr.wikipedia.org/wiki/Quadrirotor_FPV).
 - 🧠 &nbsp; CodingGame: [@Tchoow](https://www.codingame.com/profile/e1b7cf093b3c8649780dc1862a1243729489804)
