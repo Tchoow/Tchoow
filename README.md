@@ -54,7 +54,7 @@
 
 </p>
   
-  <img src="https://media.discordapp.net/attachments/671292077870415872/852259290684719114/chassis-drone-fpv_480x480-removebg-preview_1.png"/>
+ <img src="https://media.discordapp.net/attachments/671292077870415872/852259290684719114/chassis-drone-fpv_480x480-removebg-preview_1.png"/>
 
 
 
