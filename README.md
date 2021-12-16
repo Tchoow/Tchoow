@@ -20,6 +20,7 @@
   ![JavaScript](https://img.shields.io/badge/-JavaScript-333333??style=flat-square&logo=javascript)
   ![Node.js](https://img.shields.io/badge/-Node.js-333333?style=flat-square&logo=node.js)
   ![React](https://img.shields.io/badge/-React-333333?style=flat-square&logo=react)
+  ![Vue.js](https://img.shields.io/badge/-Vue.js-333333?style=flat-square&logo=vue.js)
 - 🖥️ &nbsp;
   ![Java](https://img.shields.io/badge/-Java-333333?style=flat-square&logo=java)
   ![Python](https://img.shields.io/badge/-Python-333333?style=flat-square&logo=python)
