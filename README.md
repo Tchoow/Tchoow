@@ -1,4 +1,5 @@
 ## 🤙 Bienvenue sur mon GitHub !
+Vous pouvez aussi consulter mon portfolio juste [ici](https://tchoow.github.io/portfolio/).
 
 ### ❓ &nbsp;À propos de moi
 - 🏳️ &nbsp; Français 🔵⚪️🔴 
