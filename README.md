@@ -56,7 +56,7 @@ Vous pouvez aussi consulter mon portfolio juste [ici](https://tchoow.github.io/p
 
 </p>
   
- <img src="https://media.discordapp.net/attachments/671292077870415872/852259290684719114/chassis-drone-fpv_480x480-removebg-preview_1.png"/>
+ <img src="https://livesensei.media/wp-content/uploads/2021/10/77caa32884d735d439ade45ba37feaf2.gif"/>
 
 
 
