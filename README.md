@@ -56,7 +56,6 @@ Vous pouvez aussi consulter mon portfolio juste [ici](https://tchoow.github.io/p
 
 </p>
   
- <img src="https://livesensei.media/wp-content/uploads/2021/10/77caa32884d735d439ade45ba37feaf2.gif"/>
-
+ <img src="https://livesensei.media/wp-content/uploads/2021/10/77caa32884d735d439ade45ba37feaf2.gif" style="border: 10px solid red"/>
 
 
