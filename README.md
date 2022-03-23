@@ -1,6 +1,5 @@
 ## 🤙 Bienvenue sur mon GitHub !
 
-
 ### ❓ &nbsp;À propos de moi
 - 🏳️ &nbsp; Français 🔵⚪️🔴 
 - 🎓 &nbsp; Étudiant en informatique à l'IUT du Havre.
