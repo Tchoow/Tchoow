@@ -48,9 +48,9 @@
 [![Visits Badge](https://badges.pufler.dev/visits/Tchoow/Tchoow)](https://badges.pufler.dev)
 [![Commits Badge](https://badges.pufler.dev/commits/monthly/Tchoow)](https://badges.pufler.dev)
 
-
+<!--
 <a href="https://app.daily.dev/Tchoow"><img src="https://api.daily.dev/devcards/6837ff15ffcd42f6ac6b084a2284b9d3.png?r=ivb" width="400" alt="Theo's Dev Card"/></a>
-
+-->
 
 <p align=center>
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Tchoow&show_icons=true&theme=radical&border_color=54bdc9&title_color=54bdc9&icon_color=ac498d&locale=fr&border_radius=20" />
