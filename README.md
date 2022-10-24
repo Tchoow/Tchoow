@@ -2,7 +2,7 @@
 
 ### ❓ &nbsp;À propos de moi
 - 🏳️ &nbsp; Français 🔵⚪️🔴 
-- 🎓 &nbsp; Étudiant en informatique à l'IUT du Havre.
+- 🎓 &nbsp; Étudiant en informatique à CESI Rouen.
 - ❤️ &nbsp; Passioné par le monde des drones et plus particulièrement le [FPV](https://fr.wikipedia.org/wiki/Quadrirotor_FPV).
 ### 🛡️ &nbsp;Mes profils
 - 🧠 &nbsp;  (Compétition d'algorithmes) CodingGame: [@Tchoow](https://www.codingame.com/profile/e1b7cf093b3c8649780dc1862a1243729489804)
