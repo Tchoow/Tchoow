@@ -43,20 +43,25 @@
   
 ## Statistiques
 
-[![Repos Badge](https://badges.pufler.dev/repos/Tchoow)](https://badges.pufler.dev)
-[![Years Badge](https://badges.pufler.dev/years/Tchoow)](https://badges.pufler.dev)
-[![Visits Badge](https://badges.pufler.dev/visits/Tchoow/Tchoow)](https://badges.pufler.dev)
-[![Commits Badge](https://badges.pufler.dev/commits/monthly/Tchoow)](https://badges.pufler.dev)
+<div style="display:flex;" align=center>
+<img src="https://badges.strrl.dev/repos/Tchoow" alt="Repos total" />
+<img src="https://badges.strrl.dev/years/Tchoow" alt="Nombre d'années présent sur GitHub" />
+<img src="https://komarev.com/ghpvc/?username=Tchoow" alt="Nombre de vues" />
+</div>
 
-<!--
-<a href="https://app.daily.dev/Tchoow"><img src="https://api.daily.dev/devcards/6837ff15ffcd42f6ac6b084a2284b9d3.png?r=ivb" width="400" alt="Theo's Dev Card"/></a>
--->
 
-<p align=center>
+
+<br>
+
+<div align=center style="display:flex;">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Tchoow&show_icons=true&theme=radical&border_color=54bdc9&title_color=54bdc9&icon_color=ac498d&locale=fr&border_radius=20" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Tchoow&theme=radical&border_color=54bdc9&layout=compact&title_color=54bdc9&locale=fr&border_radius=20"
 
-</p>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Tchoow&theme=radical&border_color=54bdc9&layout=compact&title_color=54bdc9&locale=fr&border_radius=20" />
+    <a href="https://app.daily.dev/Tchoow"><img src="https://api.daily.dev/devcards/6837ff15ffcd42f6ac6b084a2284b9d3.png?r=ivb" width="400" alt="Theo's Dev Card"/></a>
+ 
+ <!--
+ <img src="https://livesensei.media/wp-content/uploads/2021/10/77caa32884d735d439ade45ba37feaf2.gif" height=350 />
+-->
+</div>
   
- <img src="https://livesensei.media/wp-content/uploads/2021/10/77caa32884d735d439ade45ba37feaf2.gif" style="border: 10px solid red"/>
 
