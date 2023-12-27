@@ -65,6 +65,6 @@
 -->
 </div>
 <div align=center>
- <a href="https://app.daily.dev/Tchoow"><img src="https://api.daily.dev/devcards/6837ff15ffcd42f6ac6b084a2284b9d3.png?r=ivb" width="400" alt="Theo's Dev Card"/></a>
+ <a href="https://app.daily.dev/tchoow"><img src="https://api.daily.dev/devcards/6837ff15ffcd42f6ac6b084a2284b9d3.png?r=ivb" width="400" alt="Theo's Dev Card"/></a>
   </div>
 
