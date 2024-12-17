@@ -1,4 +1,12 @@
 ## 🤙 Bienvenue sur mon GitHub !
+<a href="https://github.com/devxb/gitanimals">
+  <img
+    src="https://render.gitanimals.org/lines/Tchoow?pet-id=656773602541690933"
+    width="600"
+    height="120"
+  />
+</a>
+  
 
 ### ❓ &nbsp;À propos de moi
 - 🏳️ &nbsp; Français 🔵⚪️🔴 
