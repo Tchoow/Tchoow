@@ -1,8 +1,8 @@
-<h1 align="center">No code, no fun.</h1>
+<h1 align="center">𝙽𝚘 𝚌𝚘𝚍𝚎, 𝙽𝚘 𝚏𝚞𝚗.</h1>
 
 <p align="center">
   <a href="https://github.com/devxb/gitanimals">
-    <img src="https://render.gitanimals.org/lines/Tchoow?pet-id=656773602541690933" width="600" height="120"/>
+    <img src="https://render.gitanimals.org/lines/Tchoow?pet-id=748516370711549609" width="600" height="120"/>
   </a>
 </p>
 <table style="border:0px solid #2ecc71; border-radius:15px; padding:15px;">
@@ -31,19 +31,19 @@
 <tr>
 <td width="50%" valign="top" align="left" style="border:2px solid #2ecc71; border-radius:15px; padding:15px;">
 
-### 🌍 About Me
-🏳️ French 🔵⚪️🔴  
-🎓 IT Engineer  
-❤️ Passionate about drones, especially [FPV](https://en.wikipedia.org/wiki/First-person_view_(radio_control))  
+### 🌍 𝙰𝚋𝚘𝚞𝚝 𝙼𝚎
+🏳️ 𝙵𝚛𝚎𝚗𝚌𝚑 🔵⚪️🔴  
+🎓 𝙸𝚃 𝙴𝚗𝚐𝚒𝚗𝚎𝚎𝚛 
+❤️ 𝙿𝚊𝚜𝚜𝚒𝚘𝚗𝚊𝚝𝚎 𝚊𝚋𝚘𝚞𝚝 𝚍𝚛𝚘𝚗𝚎𝚜, 𝚎𝚜𝚙𝚎𝚌𝚒𝚊𝚕𝚕𝚢 [𝙵𝙿𝚅](https://en.wikipedia.org/wiki/First-person_view_(radio_control))  
 
 </td>
 <td width="50%" valign="top" align="left" style="border:2px solid #2ecc71; border-radius:15px; padding:15px;">
 
-### 🛡️ My Profiles
-🧠 [Codingame](https://www.codingame.com/profile/e1b7cf093b3c8649780dc1862a1243729489804)  
-🎨 [CSSBattle](https://cssbattle.dev/player/tchoow)  
-💾 [CodePen](https://codepen.io/collection/kNWKNk?grid_type=grid)  
-🔐 [Root-me](https://www.root-me.org/Tcoow)  
+### 🛡️ 𝙼𝚢 𝙿𝚛𝚘𝚏𝚒𝚕𝚎𝚜
+🧠 [𝙲𝚘𝚍𝚒𝚗𝚐𝚊𝚖𝚎](https://www.codingame.com/profile/e1b7cf093b3c8649780dc1862a1243729489804)  
+🎨 [𝙲𝚂𝚂𝙱𝚊𝚝𝚝𝚕𝚎](https://cssbattle.dev/player/tchoow)  
+💾 [𝙲𝚘𝚍𝚎𝙿𝚎𝚗](https://codepen.io/collection/kNWKNk?grid_type=grid)  
+🔐 [𝚁𝚘𝚘𝚝-𝚖𝚎](https://www.root-me.org/Tcoow)  
 
 </td>
 </tr>
