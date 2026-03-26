@@ -27,7 +27,6 @@
 
 
 <div align="center">
-
 <table>
 <tr>
 <td width="50%" valign="top" align="left" style="border:2px solid #2ecc71; border-radius:15px; padding:15px;">
