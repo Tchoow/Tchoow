@@ -50,6 +50,12 @@ const FONTS = {
   m600: font("JetBrains Mono", "jetbrains-mono-600.woff2", 600),
 };
 
+// ── Brand assets (white-on-transparent PNGs, used as masks so they can take any fill)
+const FLOWCODE_LOGO = {
+  href: `data:image/png;base64,${readFileSync(join(ROOT, "assets/brand/flowcode-wordmark.png")).toString("base64")}`,
+  ratio: 574 / 78,
+};
+
 // ── Helpers ──────────────────────────────────────────────────
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const fmt = (n) => Number(n).toLocaleString("en-US");
@@ -308,6 +314,7 @@ function linkTile({ name, handle, glyph, file, title }) {
 
 function flowcode() {
   const w = 1200, h = 200, wx0 = w - 520; // waves fill the right side
+  const lh = 40, lw = lh * FLOWCODE_LOGO.ratio, lx = 28, ly = 68; // wordmark box
   const waves = [0, 1, 2, 3, 4]
     .map((i) => {
       const y = 40 + i * 24, a = 14 + i * 3;
@@ -317,13 +324,26 @@ function flowcode() {
     })
     .join("");
   return tile({
-    w, h, title: "Flowcode — freelance studio", fonts: ["sg700", "sg500", "m400", "m600"], glow: "tr",
-    defs: `<linearGradient id="wfade" x1="${wx0}" x2="${w}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff"/></linearGradient><mask id="wm"><rect width="${w}" height="${h}" fill="url(#wfade)"/></mask>`,
-    css: `.wave{stroke-dasharray:14 10;animation:flow 2.4s linear infinite}@keyframes flow{to{stroke-dashoffset:-48}}`,
+    w, h, title: "Flowcode — freelance studio", fonts: ["sg500", "m400", "m600"], glow: "tr",
+    defs: `
+      <mask id="fclogo" maskUnits="userSpaceOnUse" x="0" y="0" width="${w}" height="${h}"><image href="${FLOWCODE_LOGO.href}" x="${lx}" y="${ly}" width="${lw}" height="${lh}"/></mask>
+      <linearGradient id="fcfill" x1="${lx}" x2="${lx + lw}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${C.text}"/><stop offset=".55" stop-color="${C.text}"/><stop offset="1" stop-color="${C.accentSoft}"/></linearGradient>
+      <linearGradient id="fcshine" x1="0" x2="1"><stop offset="0" stop-color="${C.accent}" stop-opacity="0"/><stop offset=".5" stop-color="${C.accent}"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></linearGradient>
+      <filter id="fcglow" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="9"/></filter>
+      <linearGradient id="wfade" x1="${wx0}" x2="${w}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff"/></linearGradient><mask id="wm"><rect width="${w}" height="${h}" fill="url(#wfade)"/></mask>`,
+    css: `.wave{stroke-dasharray:14 10;animation:flow 2.4s linear infinite}@keyframes flow{to{stroke-dashoffset:-48}}
+      .shine{animation:shine 5s cubic-bezier(.5,0,.3,1) 1.2s infinite both}@keyframes shine{0%{transform:translateX(0)}35%,100%{transform:translateX(${lw + 220}px)}}
+      .halo{animation:halo 5s ease-in-out infinite alternate}@keyframes halo{from{opacity:.22}to{opacity:.42}}`,
     body: () => `
       <g mask="url(#wm)">${waves}</g>
       ${label(28, 46, "freelance studio")}
-      <text x="26" y="106" class="sg up" font-size="46" font-weight="700" letter-spacing="-1.5" fill="${C.text}" style="animation-delay:.08s">Flowcode</text>
+      <g class="up" style="animation-delay:.08s">
+        <g filter="url(#fcglow)" opacity=".3" class="halo"><rect width="${w}" height="${h}" fill="${C.accent}" mask="url(#fclogo)"/></g>
+        <g mask="url(#fclogo)">
+          <rect x="${lx}" y="${ly}" width="${lw}" height="${lh}" fill="url(#fcfill)"/>
+          <g class="shine"><rect x="${lx - 110}" y="${ly - 10}" width="70" height="${lh + 20}" fill="url(#fcshine)" transform="skewX(-18)"/></g>
+        </g>
+      </g>
       <text x="28" y="136" class="sg up" font-size="17" font-weight="500" fill="${C.muted}" style="animation-delay:.14s">Web apps, e-commerce &amp; automation.</text>
       <g class="up" style="animation-delay:.2s"><text x="28" y="170" class="mono" font-size="15" font-weight="600" fill="${C.accent}">flowcode.fr</text>${arrow(28 + monoW("flowcode.fr", 15) + 10, 158, 12, C.accent)}</g>`,
   });
