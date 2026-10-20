@@ -335,7 +335,7 @@ function flowcode() {
 
 async function fetchData() {
   const query = `query($login:String!){user(login:$login){
-    followers{totalCount}
+    avatarUrl(size:460) followers{totalCount}
     repositories(ownerAffiliations:OWNER,isFork:false,first:100,orderBy:{field:STARGAZERS,direction:DESC}){
       totalCount nodes{stargazerCount languages(first:10,orderBy:{field:SIZE,direction:DESC}){edges{size node{name}}}}}
     pullRequests{totalCount} issues{totalCount}
@@ -353,6 +353,7 @@ async function fetchData() {
   for (const r of u.repositories.nodes) for (const e of r.languages.edges) langs[e.node.name] = (langs[e.node.name] || 0) + e.size;
   const days = u.contributionsCollection.contributionCalendar.weeks.flatMap((w) => w.contributionDays.map((d) => ({ date: d.date, count: d.contributionCount })));
   return {
+    avatarUrl: u.avatarUrl,
     stars: u.repositories.nodes.reduce((s, r) => s + r.stargazerCount, 0),
     repos: u.repositories.totalCount,
     followers: u.followers.totalCount,
@@ -382,6 +383,19 @@ function mockData() {
     langs: { Java: 2857, HTML: 1863, TypeScript: 1635, "C#": 1575, SCSS: 1319, JavaScript: 752, Lua: 300 },
     days,
   };
+}
+
+/** Downloads the avatar as a data URI — SVGs rendered via <img> can't load external URLs. */
+async function loadAvatar(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(res.status);
+    const type = res.headers.get("content-type") || "image/jpeg";
+    return `data:${type};base64,${Buffer.from(await res.arrayBuffer()).toString("base64")}`;
+  } catch (e) {
+    console.warn("avatar skipped:", e.message);
+    return "";
+  }
 }
 
 function derive(data) {
@@ -517,13 +531,22 @@ function activityTile(data, dv) {
   const colCss = Array.from({ length: cols }, (_, c) => `.c${c}{animation-delay:${(c * 0.018).toFixed(3)}s}`).join("");
   const gridW = cols * step;
   const legendX = 1160 - 5 * step - 44;
+  // avatar as a faint backdrop, fading in from the left and out at the edges
+  const avatarDefs = data.avatar ? `
+      <linearGradient id="avfadeX" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff"/></linearGradient>
+      <linearGradient id="avfadeY" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset=".75" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></linearGradient>
+      <mask id="avmask" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#avfadeX)"/><rect width="1" height="1" fill="url(#avfadeY)"/></mask>
+      <filter id="avtone"><feColorMatrix type="saturate" values=".35"/></filter>` : "";
+  const avatarImg = ({ cw, ch }) => data.avatar
+    ? `<image href="${data.avatar}" width="${cw}" height="${ch}" preserveAspectRatio="xMidYMid slice" opacity=".16" mask="url(#avmask)" filter="url(#avtone)" class="fade"/>`
+    : "";
   return tile({
     w, h, title: `${data.total} contributions in the last year`, fonts: ["sg700", "m400", "m600"], glow: "tr",
-    defs: `<linearGradient id="sweep" x1="0" x2="1"><stop offset="0" stop-color="${C.accent}" stop-opacity="0"/><stop offset=".5" stop-color="${C.accent}" stop-opacity=".16"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></linearGradient>`,
+    defs: `${avatarDefs}<linearGradient id="sweep" x1="0" x2="1"><stop offset="0" stop-color="${C.accent}" stop-opacity="0"/><stop offset=".5" stop-color="${C.accent}" stop-opacity=".16"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></linearGradient>`,
     css: `.c{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.2,.7,.2,1.3) both}
       @keyframes pop{from{opacity:0;transform:scale(.4)}}${colCss}
       .sw{animation:sweep 7s cubic-bezier(.5,0,.5,1) 1.4s infinite both}@keyframes sweep{0%{transform:translateX(0)}60%,100%{transform:translateX(${gridW + 480}px)}}`,
-    body: () => `${label(26, 46, "contributions")}
+    body: (box) => `${avatarImg(box)}${label(26, 46, "contributions")}
       <text x="1160" y="46" text-anchor="end" class="mono fade" font-size="14" fill="${C.muted}"><tspan fill="${C.text}" font-weight="600">${fmt(data.total)}</tspan> in the last year · most active on <tspan fill="${C.accentSoft}">${dv.topWd}s</tspan></text>
       <g transform="translate(-8 -4)">
         ${months.join("")}
@@ -556,6 +579,7 @@ else {
   try { data = await fetchData(); console.log(`› live data for ${LOGIN}`); }
   catch (e) { console.error("GitHub API failed:", e.message); process.exit(1); }
 }
+data.avatar = await loadAvatar(data.avatarUrl || `https://github.com/${LOGIN}.png?size=460`);
 const dv = derive(data);
 const files = {
   "hero.svg": hero(),
