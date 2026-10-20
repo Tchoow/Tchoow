@@ -30,7 +30,6 @@ const C = {
   accent: "#3EE07F",
   accentSoft: "#A6F4C5",
   rec: "#FF5A5A",
-  code: { key: "#A6F4C5", str: "#F3D58A", kw: "#C79BFF", num: "#7FC8FF", punc: "#8A9792" },
 };
 const HEAT = ["#141A18", "#0F3D25", "#16683C", "#24A65A", "#3EE07F"];
 const LANG_RAMP = ["#3EE07F", "#A6F4C5", "#1FA35A", "#73E9A5", "#146B3E", "#3A4A44"];
@@ -117,27 +116,9 @@ const arrow = (x, y, size = 18, color = C.muted) =>
 //  STATIC TILES
 // ═════════════════════════════════════════════════════════════
 
-function hero() {
+function hero(avatar) {
   const w = 1200, h = 340;
-  const code = [
-    [["kw", "const "], ["", "theo"], ["punc", " = {"]],
-    [["key", "  role"], ["punc", ": "], ["str", '"fullstack dev"'], ["punc", ","]],
-    [["key", "  based"], ["punc", ": "], ["str", '"Normandy, FR"'], ["punc", ","]],
-    [["key", "  studio"], ["punc", ": "], ["str", '"flowcode.fr"'], ["punc", ","]],
-    [["key", "  loves"], ["punc", ": ["], ["str", '"FPV"'], ["punc", ", "], ["str", '"self-host"'], ["punc", ", "], ["str", '"AI"'], ["punc", "],"]],
-    [["key", "  coffee"], ["punc", ": "], ["num", "Infinity"], ["punc", ","]],
-    [["punc", "};"]],
-  ];
-  const fs = 16, lh = 26, cx0 = 56, wx = 704, wy = 40, ww = 440, wh = 264;
-  const codeLines = code
-    .map((tokens, i) => {
-      const spans = tokens.map(([k, t]) => `<tspan fill="${k ? C.code[k] : C.text}">${esc(t)}</tspan>`).join("");
-      return `<g class="ln" style="animation-delay:${0.5 + i * 0.16}s">
-        <text x="${wx + 22}" y="${wy + 82 + i * lh}" class="mono" font-size="14" fill="${C.dim}">${i + 1}</text>
-        <text x="${wx + cx0}" y="${wy + 82 + i * lh}" class="mono" font-size="${fs}" xml:space="preserve">${spans}</text></g>`;
-    })
-    .join("");
-  const lastLen = 2;
+  const wx = 804, wy = 40, ww = 340, wh = 264;
   const pills = [
     { t: "Normandy, FR" },
     { t: "FPV pilot" },
@@ -163,10 +144,9 @@ function hero() {
       <radialGradient id="dotfade" cx=".72" cy=".5" r=".55"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
       <mask id="dotmask"><rect width="1200" height="340" fill="url(#dotfade)"/></mask>
       <linearGradient id="name" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${C.text}"/><stop offset=".55" stop-color="${C.text}"/><stop offset="1" stop-color="${C.accentSoft}"/></linearGradient>
-      <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="50"/></filter>`,
+      <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="50"/></filter>
+      <clipPath id="photoclip"><path d="M${wx - 8} ${wy + 36}H${wx - 8 + ww}V${wy + wh - 20}a16 16 0 0 1-16 16H${wx + 8}a16 16 0 0 1-16-16Z"/></clipPath>`,
     css: `
-      .ln{animation:type .5s steps(8,end) both}
-      @keyframes type{from{opacity:0;transform:translateX(-6px)}}
       .cur{animation:blink 1.05s steps(1) infinite}
       .ping{transform-box:fill-box;transform-origin:center;animation:pulse 1.8s ease-out infinite}
       .orb{animation:drift 14s ease-in-out infinite alternate}
@@ -190,15 +170,13 @@ function hero() {
 
       <g class="win">
         <rect x="${wx - 8}" y="${wy - 4}" width="${ww}" height="${wh}" rx="16" fill="#0B0F0E" stroke="${C.lineHi}"/>
-        <path d="M${wx - 8} ${wy + 36}H${wx - 8 + ww}" stroke="${C.line}"/>
         <circle cx="${wx + 14}" cy="${wy + 16}" r="6" fill="#FF5F57" fill-opacity=".85"/>
         <circle cx="${wx + 34}" cy="${wy + 16}" r="6" fill="#FEBC2E" fill-opacity=".85"/>
         <circle cx="${wx + 54}" cy="${wy + 16}" r="6" fill="#28C840" fill-opacity=".85"/>
-        <text x="${wx - 8 + ww / 2}" y="${wy + 21}" text-anchor="middle" class="mono" font-size="13" fill="${C.muted}">theo.ts</text>
-        <text x="${wx + ww - 26}" y="${wy + 21}" text-anchor="end" class="mono" font-size="12" fill="${C.dim}">TS</text>
-        <g transform="translate(-8 -4)">${codeLines}
-          <rect x="${wx + cx0 + monoW("};", fs) + 3}" y="${wy + 82 + 6 * lh - 14}" width="9" height="18" rx="1" fill="${C.accent}" class="cur" style="animation-delay:1.6s"/>
-        </g>
+        <text x="${wx - 8 + ww / 2}" y="${wy + 21}" text-anchor="middle" class="mono" font-size="13" fill="${C.muted}">theo.jpg</text>
+        ${avatar ? `<image href="${avatar}" x="${wx - 8}" y="${wy + 36}" width="${ww}" height="${wh - 40}" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoclip)"/>` : ""}
+        <path d="M${wx - 8} ${wy + 36}H${wx - 8 + ww}" stroke="${C.line}"/>
+        <rect x="${wx - 8}" y="${wy - 4}" width="${ww}" height="${wh}" rx="16" stroke="${C.lineHi}"/>
       </g>`,
   });
 }
@@ -551,22 +529,13 @@ function activityTile(data, dv) {
   const colCss = Array.from({ length: cols }, (_, c) => `.c${c}{animation-delay:${(c * 0.018).toFixed(3)}s}`).join("");
   const gridW = cols * step;
   const legendX = 1160 - 5 * step - 44;
-  // avatar as a faint backdrop, fading in from the left and out at the edges
-  const avatarDefs = data.avatar ? `
-      <linearGradient id="avfadeX" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff"/></linearGradient>
-      <linearGradient id="avfadeY" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset=".75" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></linearGradient>
-      <mask id="avmask" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#avfadeX)"/><rect width="1" height="1" fill="url(#avfadeY)"/></mask>
-      <filter id="avtone"><feColorMatrix type="saturate" values=".35"/></filter>` : "";
-  const avatarImg = ({ cw, ch }) => data.avatar
-    ? `<image href="${data.avatar}" width="${cw}" height="${ch}" preserveAspectRatio="xMidYMid slice" opacity=".16" mask="url(#avmask)" filter="url(#avtone)" class="fade"/>`
-    : "";
   return tile({
     w, h, title: `${data.total} contributions in the last year`, fonts: ["sg700", "m400", "m600"], glow: "tr",
-    defs: `${avatarDefs}<linearGradient id="sweep" x1="0" x2="1"><stop offset="0" stop-color="${C.accent}" stop-opacity="0"/><stop offset=".5" stop-color="${C.accent}" stop-opacity=".16"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></linearGradient>`,
+    defs: `<linearGradient id="sweep" x1="0" x2="1"><stop offset="0" stop-color="${C.accent}" stop-opacity="0"/><stop offset=".5" stop-color="${C.accent}" stop-opacity=".16"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></linearGradient>`,
     css: `.c{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.2,.7,.2,1.3) both}
       @keyframes pop{from{opacity:0;transform:scale(.4)}}${colCss}
       .sw{animation:sweep 7s cubic-bezier(.5,0,.5,1) 1.4s infinite both}@keyframes sweep{0%{transform:translateX(0)}60%,100%{transform:translateX(${gridW + 480}px)}}`,
-    body: (box) => `${avatarImg(box)}${label(26, 46, "contributions")}
+    body: () => `${label(26, 46, "contributions")}
       <text x="1160" y="46" text-anchor="end" class="mono fade" font-size="14" fill="${C.muted}"><tspan fill="${C.text}" font-weight="600">${fmt(data.total)}</tspan> in the last year · most active on <tspan fill="${C.accentSoft}">${dv.topWd}s</tspan></text>
       <g transform="translate(-8 -4)">
         ${months.join("")}
@@ -602,7 +571,7 @@ else {
 data.avatar = await loadAvatar(data.avatarUrl || `https://github.com/${LOGIN}.png?size=460`);
 const dv = derive(data);
 const files = {
-  "hero.svg": hero(),
+  "hero.svg": hero(data.avatar),
   "stack.svg": stack(),
   "fpv.svg": fpv(),
   "stats.svg": statsTile(data, dv),
