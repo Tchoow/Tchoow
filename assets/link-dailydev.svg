@@ -13,21 +13,21 @@
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 .arr{animation:nudge 2.6s ease-in-out infinite}@keyframes nudge{50%{transform:translate(3px,-3px)}}</style>
 <defs>
-<linearGradient id="t15bg" x1="0" y1="0" x2="1" y2="1">
+<linearGradient id="t14bg" x1="0" y1="0" x2="1" y2="1">
 <stop offset="0" stop-color="#111614"/><stop offset="1" stop-color="#090C0B"/>
 </linearGradient>
-<radialGradient id="t15glow" cx="212.79999999999998" cy="0" r="156.79999999999998" gradientUnits="userSpaceOnUse">
+<radialGradient id="t14glow" cx="212.79999999999998" cy="0" r="156.79999999999998" gradientUnits="userSpaceOnUse">
 <stop offset="0" stop-color="#3EE07F" stop-opacity=".13"/><stop offset="1" stop-color="#3EE07F" stop-opacity="0"/>
 </radialGradient>
-<linearGradient id="t15edge" x1="0" y1="0" x2="0" y2="1">
+<linearGradient id="t14edge" x1="0" y1="0" x2="0" y2="1">
 <stop offset="0" stop-color="#ffffff" stop-opacity=".09"/><stop offset=".35" stop-color="#ffffff" stop-opacity="0"/>
 </linearGradient>
-<clipPath id="t15clip"><rect width="224" height="142" rx="22"/></clipPath>
+<clipPath id="t14clip"><rect width="224" height="142" rx="22"/></clipPath>
 </defs>
 <g transform="translate(8 4)">
-<rect width="224" height="142" rx="22" fill="url(#t15bg)"/>
-<rect width="224" height="142" rx="22" fill="url(#t15glow)"/>
-<g clip-path="url(#t15clip)">
+<rect width="224" height="142" rx="22" fill="url(#t14bg)"/>
+<rect width="224" height="142" rx="22" fill="url(#t14glow)"/>
+<g clip-path="url(#t14clip)">
 <g class="up">
 <rect x="20" y="20" width="44" height="44" rx="12" fill="#0F2A1C" stroke="#1F5A38"/>
 <text x="42" y="48" text-anchor="middle" class="mono" font-size="18" font-weight="600" fill="#3EE07F">//</text>
@@ -36,6 +36,6 @@
 <text x="20" y="106" class="sg up" font-size="22" font-weight="700" fill="#ECF2EE" style="animation-delay:.08s">daily.dev</text>
 <text x="20" y="128" class="mono up" font-size="13" fill="#8A9792" style="animation-delay:.14s">@tchoow</text></g>
 <rect x=".5" y=".5" width="223" height="141" rx="21.5" stroke="#1E2624"/>
-<rect x=".5" y=".5" width="223" height="141" rx="21.5" stroke="url(#t15edge)"/>
+<rect x=".5" y=".5" width="223" height="141" rx="21.5" stroke="url(#t14edge)"/>
 </g>
 </svg>

@@ -307,18 +307,18 @@ function linkTile({ name, handle, glyph, file, title }) {
 }
 
 function flowcode() {
-  const w = 600, h = 200;
+  const w = 1200, h = 200, wx0 = w - 520; // waves fill the right side
   const waves = [0, 1, 2, 3, 4]
     .map((i) => {
       const y = 40 + i * 24, a = 14 + i * 3;
-      let d = `M360 ${y}`;
-      for (let x = 360; x <= 620; x += 40) d += ` Q${x + 20} ${y + (((x / 40) | 0) % 2 ? a : -a)} ${x + 40} ${y}`;
+      let d = `M${wx0} ${y}`;
+      for (let x = wx0; x <= w + 20; x += 40) d += ` Q${x + 20} ${y + (((x / 40) | 0) % 2 ? a : -a)} ${x + 40} ${y}`;
       return `<path d="${d}" stroke="${i === 2 ? C.accent : C.lineHi}" stroke-width="${i === 2 ? 2.5 : 1.5}" stroke-linecap="round" class="wave" style="animation-delay:${-i * 0.6}s" opacity="${i === 2 ? 1 : 0.9}"/>`;
     })
     .join("");
   return tile({
     w, h, title: "Flowcode — freelance studio", fonts: ["sg700", "sg500", "m400", "m600"], glow: "tr",
-    defs: `<linearGradient id="wfade" x1="360" x2="600" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff"/></linearGradient><mask id="wm"><rect width="600" height="200" fill="url(#wfade)"/></mask>`,
+    defs: `<linearGradient id="wfade" x1="${wx0}" x2="${w}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff"/></linearGradient><mask id="wm"><rect width="${w}" height="${h}" fill="url(#wfade)"/></mask>`,
     css: `.wave{stroke-dasharray:14 10;animation:flow 2.4s linear infinite}@keyframes flow{to{stroke-dashoffset:-48}}`,
     body: () => `
       <g mask="url(#wm)">${waves}</g>
@@ -326,31 +326,6 @@ function flowcode() {
       <text x="26" y="106" class="sg up" font-size="46" font-weight="700" letter-spacing="-1.5" fill="${C.text}" style="animation-delay:.08s">Flowcode</text>
       <text x="28" y="136" class="sg up" font-size="17" font-weight="500" fill="${C.muted}" style="animation-delay:.14s">Web apps, e-commerce &amp; automation.</text>
       <g class="up" style="animation-delay:.2s"><text x="28" y="170" class="mono" font-size="15" font-weight="600" fill="${C.accent}">flowcode.fr</text>${arrow(28 + monoW("flowcode.fr", 15) + 10, 158, 12, C.accent)}</g>`,
-  });
-}
-
-function codelow() {
-  const w = 600, h = 200;
-  const bars = Array.from({ length: 9 }, (_, i) =>
-    `<rect x="${404 + i * 16}" y="${110}" width="8" height="40" rx="4" fill="${i % 3 === 1 ? C.accent : C.lineHi}" class="eq" style="animation-delay:${-(i * 0.17).toFixed(2)}s;animation-duration:${(0.9 + (i % 4) * 0.2).toFixed(2)}s"/>`
-  ).join("");
-  return tile({
-    w, h, title: "CodeLow — Roblox Studio channel", fonts: ["sg700", "sg500", "m400", "m600"], glow: "br",
-    css: `
-      .eq{transform-box:fill-box;transform-origin:center bottom;animation:eq 1s ease-in-out infinite alternate}
-      @keyframes eq{0%{transform:scaleY(.25)}100%{transform:scaleY(1)}}
-      .ring{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-out infinite}`,
-    body: () => `
-      ${label(28, 46, "youtube · community")}
-      <text x="26" y="106" class="sg up" font-size="46" font-weight="700" letter-spacing="-1.5" fill="${C.text}" style="animation-delay:.08s">CodeLow</text>
-      <text x="28" y="136" class="sg up" font-size="17" font-weight="500" fill="${C.muted}" style="animation-delay:.14s">Roblox Studio tutorials, in French.</text>
-      <g class="up" style="animation-delay:.2s"><text x="28" y="170" class="mono" font-size="15" font-weight="600" fill="${C.accent}">30k+ followers · 10k+ Discord</text></g>
-      <g transform="translate(-8 -4)">
-        <circle cx="${512}" cy="${66}" r="26" stroke="${C.accent}" stroke-opacity=".5" class="ring"/>
-        <rect x="486" y="40" width="52" height="52" rx="16" fill="#0F2A1C" stroke="#1F5A38"/>
-        <path d="M506 54.5v23l18-11.5z" fill="${C.accent}" stroke="${C.accent}" stroke-width="3" stroke-linejoin="round"/>
-        <g transform="translate(16 32)">${bars}</g>
-      </g>`,
   });
 }
 
@@ -563,14 +538,12 @@ function activityTile(data, dv) {
   });
 }
 
-function footer(mock) {
+function footer() {
   const w = 1200, h = 90;
-  const d = mock ? "preview data" : `updated ${new Date().toISOString().slice(0, 10)}`;
   return tile({
     w, h, title: "No code, no fun.", fonts: ["sg700", "m400"], glow: "c",
-    body: ({ cw }) => `
-      <text x="28" y="53" class="sg" font-size="22" font-weight="700" fill="${C.text}">No code, <tspan fill="${C.accent}">no fun.</tspan></text>
-      <text x="${cw - 28}" y="51" text-anchor="end" class="mono" font-size="13" fill="${C.dim}">${esc(d)} · built with SVG &amp; GitHub Actions</text>`,
+    body: () => `
+      <text x="28" y="53" class="sg" font-size="22" font-weight="700" fill="${C.text}">No code, <tspan fill="${C.accent}">no fun.</tspan></text>`,
   });
 }
 
@@ -593,8 +566,7 @@ const files = {
   "streak.svg": streakTile(data, dv),
   "activity.svg": activityTile(data, dv),
   "flowcode.svg": flowcode(),
-  "codelow.svg": codelow(),
-  "footer.svg": footer(MOCK),
+  "footer.svg": footer(),
 };
 const links = [
   { file: "link-codingame.svg", name: "Codingame", handle: "puzzles & bots", glyph: "</>", title: "Codingame profile" },
