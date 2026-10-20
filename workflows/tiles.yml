@@ -1,0 +1,46 @@
+name: Refresh profile tiles
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # every day, 03:17 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/**", ".github/workflows/tiles.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tiles
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build SVG tiles
+        run: node scripts/build.mjs
+        env:
+          # Optional: add a classic PAT with the `read:user` scope as STATS_TOKEN
+          # to include private repos in stats & languages. Falls back to GITHUB_TOKEN.
+          GH_TOKEN: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_LOGIN: ${{ github.repository_owner }}
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          if git diff --staged --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: refresh profile tiles"
+            git push
+          fi

@@ -1,68 +1,16 @@
-<h1 align="center">𝙽𝚘 𝚌𝚘𝚍𝚎, 𝙽𝚘 𝚏𝚞𝚗.</h1>
+<!--
+  Bento profile — every tile is an animated SVG in /assets.
+  Static tiles + live stats are rebuilt daily by .github/workflows/tiles.yml (scripts/build.mjs).
+  Keep each row on ONE line with no spaces between tags: the gutters are baked into the SVGs.
+-->
 
 <p align="center">
-  <a href="https://github.com/devxb/gitanimals">
-    <img src="https://render.gitanimals.org/lines/Tchoow?pet-id=748516370711549609" width="600" height="120"/>
-  </a>
+<a href="https://flowcode.fr"><img src="./assets/hero.svg" width="100%" alt="Théo Lavie — Fullstack developer & IT engineer. No code, no fun."></a><br>
+<img src="./assets/stack.svg" width="66.66%" alt="Stack: TypeScript, JavaScript, Java, C#, PHP, Lua, SQL, SvelteKit, Astro, Directus, PrestaShop, SCSS, n8n, Docker, Dokploy, Traefik, Cloudflare, Tailscale, Claude Code"><a href="https://en.wikipedia.org/wiki/First-person_view_(radio_control)"><img src="./assets/fpv.svg" width="33.33%" alt="FPV drone pilot"></a><br>
+<a href="https://github.com/Tchoow?tab=repositories"><img src="./assets/stats.svg" width="33.33%" alt="GitHub stats"></a><a href="https://github.com/Tchoow?tab=repositories"><img src="./assets/languages.svg" width="33.33%" alt="Most used languages"></a><a href="https://github.com/Tchoow"><img src="./assets/streak.svg" width="33.33%" alt="Contribution streak"></a><br>
+<a href="https://github.com/Tchoow"><img src="./assets/activity.svg" width="100%" alt="Contribution calendar"></a><br>
+<a href="https://flowcode.fr"><img src="./assets/flowcode.svg" width="50%" alt="Flowcode — freelance studio"></a><a href="https://www.youtube.com/@CodeLow"><img src="./assets/codelow.svg" width="50%" alt="CodeLow — Roblox Studio tutorials in French"></a><br>
+<a href="https://www.codingame.com/profile/e1b7cf093b3c8649780dc1862a1243729489804"><img src="./assets/link-codingame.svg" width="20%" alt="Codingame"></a><a href="https://cssbattle.dev/player/tchoow"><img src="./assets/link-cssbattle.svg" width="20%" alt="CSSBattle"></a><a href="https://codepen.io/collection/kNWKNk?grid_type=grid"><img src="./assets/link-codepen.svg" width="20%" alt="CodePen"></a><a href="https://www.root-me.org/Tcoow"><img src="./assets/link-rootme.svg" width="20%" alt="Root-me"></a><a href="https://app.daily.dev/tchoow"><img src="./assets/link-dailydev.svg" width="20%" alt="daily.dev"></a><br>
+<a href="https://github.com/devxb/gitanimals"><img src="https://render.gitanimals.org/lines/Tchoow?pet-id=748516370711549609" width="600" height="120" alt="gitanimals"></a><br>
+<img src="./assets/footer.svg" width="100%" alt="No code, no fun.">
 </p>
-
-<table style="border:0px solid #2ecc71; border-radius:15px; padding:15px;">
-<tr>
-<td width="25%" align="center" style="border:0px solid #2ecc71; border-radius:15px; padding:15px;">
-
-
-<a href="https://app.daily.dev/tchoow">
-  <img src="https://api.daily.dev/devcards/6837ff15ffcd42f6ac6b084a2284b9d3.png?r=ivb" width="100%" alt="Theo's Dev Card"/>
-</a>
-
-</td>
-<td width="75%" align="center" style="border:0px solid #2ecc71; border-radius:15px; padding:15px;">
-
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Tchoow&theme=github-compact&bg_color=0D1117&color=2ecc71&line=27ae60&point=2ecc71&hide_border=false&border_radius=20" width="100%"/>
-
-</td>
-</tr>
-</table>
-
-
-<div align="center">
-<table>
-<tr>
-<td width="50%" valign="top" align="left" style="border:2px solid #2ecc71; border-radius:15px; padding:15px;">
-
-### 🌍 𝙰𝚋𝚘𝚞𝚝 𝙼𝚎
-🏳️ 𝙵𝚛𝚎𝚗𝚌𝚑 🔵⚪️🔴  
-🎓 𝙸𝚃 𝙴𝚗𝚐𝚒𝚗𝚎𝚎𝚛 
-❤️ 𝙿𝚊𝚜𝚜𝚒𝚘𝚗𝚊𝚝𝚎 𝚊𝚋𝚘𝚞𝚝 𝚍𝚛𝚘𝚗𝚎𝚜, 𝚎𝚜𝚙𝚎𝚌𝚒𝚊𝚕𝚕𝚢 [𝙵𝙿𝚅](https://en.wikipedia.org/wiki/First-person_view_(radio_control))  
-
-</td>
-<td width="50%" valign="top" align="left" style="border:2px solid #2ecc71; border-radius:15px; padding:15px;">
-
-### 🛡️ 𝙼𝚢 𝙿𝚛𝚘𝚏𝚒𝚕𝚎𝚜
-🧠 [𝙲𝚘𝚍𝚒𝚗𝚐𝚊𝚖𝚎](https://www.codingame.com/profile/e1b7cf093b3c8649780dc1862a1243729489804)  
-🎨 [𝙲𝚂𝚂𝙱𝚊𝚝𝚝𝚕𝚎](https://cssbattle.dev/player/tchoow)  
-💾 [𝙲𝚘𝚍𝚎𝙿𝚎𝚗](https://codepen.io/collection/kNWKNk?grid_type=grid)  
-🔐 [𝚁𝚘𝚘𝚝-𝚖𝚎](https://www.root-me.org/Tcoow)  
-
-</td>
-</tr>
-</table>
-
-
-<table>
-<tr>
-<td width="50%" align="center" style="border:2px solid #2ecc71; border-radius:15px; padding:15px;">
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=Tchoow&show_icons=true&theme=merko&border_radius=20&hide_border=false&border_color=2ecc71" />
-
-</td>
-<td width="50%" align="center" style="border:2px solid #2ecc71; border-radius:15px; padding:15px;">
-
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Tchoow&layout=compact&theme=merko&border_radius=20&hide_border=false&border_color=2ecc71" />
-
-</td>
-</tr>
-</table>
-
