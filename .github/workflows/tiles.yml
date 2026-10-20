@@ -28,7 +28,7 @@ jobs:
       - name: Build SVG tiles
         run: node scripts/build.mjs
         env:
-          # Optional: add a classic PAT with the `read:user` scope as STATS_TOKEN
+          # Optional: add a classic PAT with the `repo` + `read:user` scopes as STATS_TOKEN
           # to include private repos in stats & languages. Falls back to GITHUB_TOKEN.
           GH_TOKEN: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
           GH_LOGIN: ${{ github.repository_owner }}

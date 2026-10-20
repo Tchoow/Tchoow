@@ -29,7 +29,7 @@
 <rect width="1184" height="82" rx="22" fill="url(#t10glow)"/>
 <g clip-path="url(#t10clip)">
 <text x="28" y="53" class="sg" font-size="22" font-weight="700" fill="#ECF2EE">No code, <tspan fill="#3EE07F">no fun.</tspan></text>
-<text x="1156" y="51" text-anchor="end" class="mono" font-size="13" fill="#56625E">preview data · built with SVG &amp; GitHub Actions</text></g>
+<text x="1156" y="51" text-anchor="end" class="mono" font-size="13" fill="#56625E">updated 2026-10-20 · built with SVG &amp; GitHub Actions</text></g>
 <rect x=".5" y=".5" width="1183" height="81" rx="21.5" stroke="#1E2624"/>
 <rect x=".5" y=".5" width="1183" height="81" rx="21.5" stroke="url(#t10edge)"/>
 </g>

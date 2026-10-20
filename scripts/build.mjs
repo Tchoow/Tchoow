@@ -133,7 +133,6 @@ function hero() {
     .join("");
   const lastLen = 2;
   const pills = [
-    { t: "open to freelance", dot: true },
     { t: "Normandy, FR" },
     { t: "FPV pilot" },
   ];
@@ -439,13 +438,16 @@ function statsTile(data, dv) {
   const pts = wk.map((v, i) => [sx0 + (i / (wk.length - 1)) * (sx1 - sx0), sy1 - (v / max) * (sy1 - sy0)]);
   const line = pts.map((p, i) => `${i ? "L" : "M"}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join("");
   const mini = [["stars", data.stars], ["PRs", data.prs], ["issues", data.issues], ["repos", data.repos]];
+  // shrink big numbers so they never run into the sparkline / their neighbour
+  const totalFs = fmt(data.total).length > 5 ? 48 : 58;
+  const miniFs = Math.max(...mini.map(([, v]) => fmt(v).length)) > 4 ? 23 : 28;
   return tile({
     w, h, title: `GitHub stats: ${data.total} contributions in the last year`, fonts: ["sg700", "m400", "m600"], glow: "tl",
     defs: `<linearGradient id="spark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${C.accent}" stop-opacity=".35"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></linearGradient>`,
     css: `.draw{stroke-dasharray:600;animation:draw 1.6s cubic-bezier(.4,0,.2,1) .3s both}@keyframes draw{from{stroke-dashoffset:600}}`,
     body: () => `
       ${label(26, 46, "github · 12 mo")}
-      <text x="24" y="122" class="sg up" font-size="58" font-weight="700" letter-spacing="-2" fill="${C.text}" style="animation-delay:.08s">${fmt(data.total)}</text>
+      <text x="24" y="122" class="sg up" font-size="${totalFs}" font-weight="700" letter-spacing="-2" fill="${C.text}" style="animation-delay:.08s">${fmt(data.total)}</text>
       <text x="26" y="148" class="mono up" font-size="14" fill="${C.muted}" style="animation-delay:.14s">contributions</text>
       <g transform="translate(-8 -4)">
         <path d="${line}L${sx1} ${sy1}L${sx0} ${sy1}Z" fill="url(#spark)" class="fade" style="animation-delay:.9s"/>
@@ -455,7 +457,7 @@ function statsTile(data, dv) {
       </g>
       <path d="M24 178H360" stroke="${C.line}"/>
       ${mini.map(([k, v], i) => `<g class="up" style="animation-delay:${0.25 + i * 0.07}s">
-        <text x="${24 + i * 86}" y="222" class="sg" font-size="28" font-weight="700" fill="${C.text}">${fmt(v)}</text>
+        <text x="${24 + i * 86}" y="222" class="sg" font-size="${miniFs}" font-weight="700" fill="${C.text}">${fmt(v)}</text>
         <text x="${25 + i * 86}" y="244" class="mono" font-size="13" fill="${C.muted}">${k}</text></g>`).join("")}`,
   });
 }

@@ -52,13 +52,10 @@
 <rect x="257.2" y="220" width="10" height="20" rx="1" fill="#3EE07F" class="cur"/>
 </g>
 <g transform="translate(-8 -4)"><g class="up" style="animation-delay:0.55s">
-<rect x="56" y="262" width="203" height="38" rx="19" fill="#0F2A1C" stroke="#1F5A38"/>
-<circle cx="78" cy="281" r="5" fill="#3EE07F"/><circle cx="78" cy="281" r="5" fill="#3EE07F" class="ping"/>
-<text x="92" y="286" class="mono" font-size="15" fill="#A6F4C5">open to freelance</text></g><g class="up" style="animation-delay:0.65s">
-<rect x="269" y="262" width="140" height="38" rx="19" fill="#141A18" stroke="#1E2624"/>
-<text x="285" y="286" class="mono" font-size="15" fill="#8A9792">Normandy, FR</text></g><g class="up" style="animation-delay:0.75s">
-<rect x="419" y="262" width="113" height="38" rx="19" fill="#141A18" stroke="#1E2624"/>
-<text x="435" y="286" class="mono" font-size="15" fill="#8A9792">FPV pilot</text></g></g>
+<rect x="56" y="262" width="140" height="38" rx="19" fill="#141A18" stroke="#1E2624"/>
+<text x="72" y="286" class="mono" font-size="15" fill="#8A9792">Normandy, FR</text></g><g class="up" style="animation-delay:0.65s">
+<rect x="206" y="262" width="113" height="38" rx="19" fill="#141A18" stroke="#1E2624"/>
+<text x="222" y="286" class="mono" font-size="15" fill="#8A9792">FPV pilot</text></g></g>
 <g class="win">
 <rect x="696" y="36" width="440" height="264" rx="16" fill="#0B0F0E" stroke="#2A3532"/>
 <path d="M696 76H1136" stroke="#1E2624"/>
