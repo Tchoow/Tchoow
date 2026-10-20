@@ -227,6 +227,66 @@ function fpv() {
     .join("");
   const osd = (x, y, t, anchor = "start", fill = C.text, size = 13) =>
     `<text x="${x}" y="${y}" text-anchor="${anchor}" class="mono" font-size="${size}" font-weight="600" fill="${fill}">${t}</text>`;
+
+  // ── City flythrough: box buildings projected through a pinhole camera (vanishing point = crosshair).
+  // Buildings sit in fixed depth "slots" drawn far→near so painter's order is always right; every
+  // beat each slot hands its building to the nearer slot and picks up the next one (SMIL path morph).
+  const f = 160, camY = 2.1, xi = 1.7, d = 0.9, S = 1.4, N = 6, Q = 4, beat = 0.6;
+  const z0 = (f * xi) / (sw / 2 + 40) - d; // nearest slot ends with the whole building off-screen
+  const zFar = z0 + N * S;
+  const n = (v) => +v.toFixed(1);
+  const P = (x, y, z) => `${n(cx + (f * x) / z)} ${n(cy - (f * y) / z)}`;
+  const quad = (a, b, c, e) => `M${a}L${b}L${c}L${e}Z`;
+  const mix = (a, b, t) => "#" + [1, 3, 5].map((i) => Math.round(parseInt(a.slice(i, i + 2), 16) * (1 - t) + parseInt(b.slice(i, i + 2), 16) * t).toString(16).padStart(2, "0")).join("");
+  const fog = (z) => Math.min(1, Math.max(0, (z - z0) / (zFar - z0))) ** 1.3 * 0.85;
+  const FACES = { side: "#0C1814", front: "#070C0A", top: "#1A3D2D" };
+  const faces = ({ h, w }, s, z) => {
+    const x1 = s * xi, x2 = s * (xi + w), yb = -camY, yt = h - camY, z2 = z + d;
+    return {
+      side: quad(P(x1, yb, z), P(x1, yt, z), P(x1, yt, z2), P(x1, yb, z2)),
+      front: quad(P(x1, yb, z), P(x1, yt, z), P(x2, yt, z), P(x2, yb, z)),
+      top: yt < 0 ? quad(P(x1, yt, z), P(x2, yt, z), P(x2, yt, z2), P(x1, yt, z2)) : quad(P(x1, yt, z), P(x2, yt, z), P(x2, yt, z), P(x1, yt, z)),
+    };
+  };
+  const streets = [
+    { s: -1, blocks: [{ h: 3.2, w: 1.4 }, { h: 1.1, w: 1.8 }, { h: 4.4, w: 1.2 }, { h: 2.0, w: 1.6 }] },
+    { s: 1, blocks: [{ h: 1.6, w: 1.5 }, { h: 3.8, w: 1.3 }, { h: 0.9, w: 2.0 }, { h: 2.7, w: 1.4 }, { h: 4.9, w: 1.1 }] },
+  ];
+  const slots = [];
+  for (let k = N - 1; k >= 0; k--) {
+    const zA = z0 + (k + 1) * S, zB = z0 + k * S;
+    for (const { s, blocks } of streets) {
+      const M = blocks.length, frames = { side: [], front: [], top: [] }, kt = [];
+      for (let m = 0; m < M; m++) {
+        for (let q = 0; q <= Q; q++) {
+          const fc = faces(blocks[(k + m) % M], s, zA - ((zA - zB) * q) / Q);
+          for (const key in frames) frames[key].push(fc[key]);
+          kt.push(((m + q / Q) / M + (m && !q ? 5e-4 : 0)).toFixed(4));
+        }
+      }
+      const morph = `keyTimes="${kt.join(";")}" dur="${M * beat}s" repeatCount="indefinite"`;
+      const shade = (c) => `<animate attributeName="fill" values="${mix(c, "#0D2019", fog(zA))};${mix(c, "#0D2019", fog(zB))}" dur="${beat}s" repeatCount="indefinite"/>`;
+      slots.push(`<g stroke="${C.accent}" stroke-width="1" stroke-linejoin="round">
+        <animate attributeName="stroke-opacity" values="${n(0.55 * (1 - fog(zA)))};${n(0.55 * (1 - fog(zB)))}" dur="${beat}s" repeatCount="indefinite"/>
+        ${k === N - 1 ? `<animate attributeName="opacity" values="0;1" dur="${beat}s" repeatCount="indefinite"/>` : ""}
+        ${Object.keys(frames).map((key) => `<path d="${frames[key][0]}">${shade(FACES[key])}<animate attributeName="d" values="${frames[key].join(";")}" ${morph}/></path>`).join("")}
+      </g>`);
+    }
+  }
+  // Road: static edges converge on the vanishing point, centre dashes stream towards the camera.
+  const Sd = S / 2, dash = 0.35, dw = 0.05, zg = 1;
+  const road = [-1, 1].map((s) => `M${P(s * (xi - 0.3), -camY, 0.4)}L${cx} ${cy}`).join("");
+  const dashFrames = [];
+  for (let q = 0; q <= Q; q++) {
+    let p = "";
+    for (let j = 0, z = zg - (Sd * q) / Q; j < (zFar + 2 - zg) / Sd; j++, z += Sd) p += quad(P(-dw, -camY, z), P(dw, -camY, z), P(dw, -camY, z + dash), P(-dw, -camY, z + dash));
+    dashFrames.push(p);
+  }
+  const city = `
+    <path d="${road}" stroke="${C.accent}" stroke-opacity=".3" stroke-width="1.5"/>
+    <path d="${dashFrames[0]}" fill="${C.accent}" fill-opacity=".55"><animate attributeName="d" values="${dashFrames.join(";")}" dur="${beat / 2}s" repeatCount="indefinite"/></path>
+    ${slots.join("")}`;
+
   return tile({
     w, h, title: "FPV drone pilot", fonts: ["m400", "m600"], glow: "bl",
     defs: `
@@ -250,6 +310,7 @@ function fpv() {
           <g class="horizon">
             <rect x="${sx - 200}" y="${sy - 200}" width="${sw + 400}" height="${sh / 2 + 200}" fill="#0F2A20"/>
             <rect x="${sx - 200}" y="${cy}" width="${sw + 400}" height="${sh / 2 + 200}" fill="#080B0A"/>
+            ${city}
             <path d="M${sx - 200} ${cy}H${cx - 44}M${cx + 44} ${cy}H${sx + sw + 200}" stroke="${C.accent}" stroke-width="2.5"/>
             ${ladder}
           </g>
