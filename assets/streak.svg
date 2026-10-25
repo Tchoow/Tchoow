@@ -40,9 +40,9 @@ stroke-dashoffset="0.0" transform="rotate(-90 104 150)" class="arc"/>
 <text x="212" y="104" class="mono" font-size="13" fill="#8A9792">longest</text>
 <text x="212" y="127" class="sg" font-size="20" font-weight="700" fill="#ECF2EE">72 days</text></g><g class="up" style="animation-delay:0.38s">
 <text x="212" y="154" class="mono" font-size="13" fill="#8A9792">active days</text>
-<text x="212" y="177" class="sg" font-size="20" font-weight="700" fill="#ECF2EE">312</text></g><g class="up" style="animation-delay:0.45999999999999996s">
+<text x="212" y="177" class="sg" font-size="20" font-weight="700" fill="#ECF2EE">310</text></g><g class="up" style="animation-delay:0.45999999999999996s">
 <text x="212" y="204" class="mono" font-size="13" fill="#8A9792">best day</text>
-<text x="212" y="227" class="sg" font-size="20" font-weight="700" fill="#ECF2EE">346 · Oct 18</text></g>
+<text x="212" y="227" class="sg" font-size="20" font-weight="700" fill="#ECF2EE">349 · Oct 18</text></g>
 </g></g>
 <rect x=".5" y=".5" width="383" height="261" rx="21.5" stroke="#1E2624"/>
 <rect x=".5" y=".5" width="383" height="261" rx="21.5" stroke="url(#t6edge)"/>
